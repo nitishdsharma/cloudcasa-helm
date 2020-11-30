@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   cloudcasa-app:
   - apiVersion: v2
+    appVersion: 1.1.5
+    created: "2020-11-30T14:52:47.034055718+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 33522b3055e468d29b839a50f3e9dc2c98b798a7b1aca76d2a11c0ebbc71b371
+    name: cloudcasa-app
+    urls:
+    - https://github.com/nitishdsharma/cloudcasa-helm/releases/download/cloudcasa-app-0.1.5/cloudcasa-app-0.1.5.tgz
+    version: 0.1.5
+  - apiVersion: v2
     appVersion: 1.1.4
     created: "2020-11-30T13:51:48.933334933+05:30"
     description: A Helm chart for Kubernetes
