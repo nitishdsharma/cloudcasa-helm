@@ -12,3 +12,10 @@ questions:
   required: true
   label: AMDS_CLUSTER_ID
   group: "Cloudcasa"
+- variable: AMDS_CLUSTER_TYPE
+  default: "production"
+  description: "Cloudcasa Cluster Type - production/staging"
+  type: string
+  required: true
+  label: AMDS_CLUSTER_TYPE
+  group: "Cloudcasa"

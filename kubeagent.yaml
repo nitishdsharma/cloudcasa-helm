@@ -2891,9 +2891,8 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       containers:
-      - image: catalogicsoftware/amds-kagent:0.1.0-rc.248
-        #        args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.staging.cloudcasa.io:443", "--tls", "true"]
-        args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.{{ .Values.AMDS_CLUSTER_TYPE }}.cloudcasa.io:443", "--tls", "true"]
+      - image: catalogicsoftware/amds-kagent:0.1.0-rc.251
+        args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.staging.cloudcasa.io:443", "--tls", "true"]
         name: kubeagent
         resources:
           requests:
@@ -2904,7 +2903,7 @@ spec:
             cpu: "500m"
         env:
         - name: AMDS_CLUSTER_ID
-          value: "{{ .Values.AMDS_CLUSTER_ID }}"
+          value: 5fc4b200299ca375af925263
         volumeMounts:
         - mountPath: /credentials
           name: cloud-credentials
