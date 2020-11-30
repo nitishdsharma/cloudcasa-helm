@@ -18,11 +18,3 @@ questions:
   type: password
   label: WordPress Password
   group: "WordPress Settings"
-- variable: wordpressEmail
-  default: "user@example.com"
-  description: "Admin email"
-  type: string
-  required: true
-  label: WordPress Admin Email
-  show_if: "mariadb.enabled=false"
-  group: "Database Settings"
