@@ -2,9 +2,14 @@
   "$schema": "http://json-schema.org/schema#",
   "type": "object",
   "properties": {
-    "wordpressUsername": {
+    "amds_cluster_id": {
       "type": "string",
       "title": "AMDS_CLUSTER_ID",
+      "form": true
+    },
+    "amds_cluster_Type": {
+      "type": "string",
+      "title": "AMDS_CLUSTER_TYPE",
       "form": true
     }
   }
