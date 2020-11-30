@@ -5,16 +5,10 @@ categories:
 - Blog
 - CMS
 questions:
-- variable: wordpressUsername
-  default: "user"
-  description: "User of the application"
+- variable: AMDS_CLUSTER_ID
+  default: ""
+  description: "Cloudcasa Cluster ID"
   type: string
   required: true
-  label: WordPress Usernname
-  group: "WordPress Settings"
-- variable: wordpressPassword
-  default: ""
-  description: "password will be auto-generated if not specified"
-  type: password
-  label: WordPress Password
-  group: "WordPress Settings"
+  label: AMDS_CLUSTER_ID
+  group: "Cloudcasa"

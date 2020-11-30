@@ -18,7 +18,7 @@ serviceAccount:
   annotations: {}
   name: ""
 
-AMDS_CLUSTER_ID: 5fc0d782192031391f205b5f
+  #AMDS_CLUSTER_ID: 5fc0d782192031391f205b5f
 
 podAnnotations: {}
 

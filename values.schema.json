@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "wordpressUsername": {
+      "type": "string",
+      "title": "AMDS_CLUSTER_ID",
+      "form": true
+    }
+  }
+}
