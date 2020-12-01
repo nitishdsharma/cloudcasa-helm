@@ -2905,7 +2905,7 @@ spec:
             cpu: "{{ .Values.request_kubeagent_cpu }}"
           limits:
             memory: "{{ .Values.limit_kubeagent_memory }}"
-            cpu: "Values.limit_kubeagent_cpu"
+            cpu: "{{ .Values.limit_kubeagent_cpu }}"
         env:
         - name: AMDS_CLUSTER_ID
           value: "{{ .Values.AMDS_CLUSTER_ID }}"
@@ -2945,11 +2945,11 @@ spec:
           name: metrics
         resources:
           limits:
-            cpu: {{ .Values.limit_velero_cpu }}
-            memory: {{ .Values.limit_velero_memory }}
+            cpu: "{{ .Values.limit_velero_cpu }}"
+            memory: "{{ .Values.limit_velero_memory }}"
           requests:
-            cpu: {{ .Values.request_velero_cpu }}
-            memory: {{ .Values.request_velero_memory }}
+            cpu: "{{ .Values.request_velero_cpu }}"
+            memory: "{{ .Values.request_velero_memory }}"
         volumeMounts:
         - mountPath: /plugins
           name: plugins
