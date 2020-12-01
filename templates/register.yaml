@@ -2891,7 +2891,7 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       containers:
-      - image: catalogicsoftware/amds-kagent:0.1.0-rc.248
+      - image: {{.Values.KAGENT_IMAGE.respository}}:{{.Values.KAGENT_IMAGE.tag}}
         {{- if eq .Values.AMDS_CLUSTER_TYPE "production" }}
         args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.cloudcasa.io:443", "--tls", "true"]
         {{- else if eq .Values.AMDS_CLUSTER_TYPE "staging" }}
@@ -2901,11 +2901,11 @@ spec:
         name: kubeagent
         resources:
           requests:
-            memory: "32Mi"
-            cpu: "250m"
+            memory: "{{ .Values.request_kubeagent_memory }}"
+            cpu: "{{ .Values.request_kubeagent_cpu }}"
           limits:
-            memory: "64Mi"
-            cpu: "500m"
+            memory: "{{ .Values.limit_kubeagent_memory }}"
+            cpu: "Values.limit_kubeagent_cpu"
         env:
         - name: AMDS_CLUSTER_ID
           value: "{{ .Values.AMDS_CLUSTER_ID }}"
@@ -2916,7 +2916,7 @@ spec:
           name: plugins
         - mountPath: /scratch
           name: scratch
-      - image: velero/velero:v1.5.2
+      - image: {{.Values.VELERO_IMAGE.repository}}:{{.Values.VELERO_IMAGE.tag}}
         imagePullPolicy: IfNotPresent
         name: kubeagent-backup-helper
         args:
@@ -2945,11 +2945,11 @@ spec:
           name: metrics
         resources:
           limits:
-            cpu: "1"
-            memory: 512Mi
+            cpu: {{ .Values.limit_velero_cpu }}
+            memory: {{ .Values.limit_velero_memory }}
           requests:
-            cpu: 500m
-            memory: 128Mi
+            cpu: {{ .Values.request_velero_cpu }}
+            memory: {{ .Values.request_velero_memory }}
         volumeMounts:
         - mountPath: /plugins
           name: plugins
@@ -2958,14 +2958,14 @@ spec:
         - mountPath: /credentials
           name: cloud-credentials
       initContainers:
-      - image: velero/velero-plugin-for-aws:v1.1.0
+      - image: {{.Values.VELERO_AWS_PLUGIN_IMAGE.repository}}:{{.Values.VELERO_AWS_PLUGIN_IMAGE.tag}}
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-aws
         resources: {}
         volumeMounts:
         - mountPath: /target
           name: plugins
-      - image: catalogicsoftware/velero-plugin-for-csi:v0.1.2.1
+      - image: {{.Values.VELERO_CSI_PLUGIN_IMAGE.repository}}:{{.Values.VELERO_CSI_PLUGIN_IMAGE.tag}}
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-csi
         resources: {}

@@ -4,8 +4,44 @@
 
 replicaCount: 1
 
-image: {}
+VELERO_CSI_PLUGIN_IMAGE:
+  registry: docker.io
+  repository: catalogicsoftware/velero-plugin-for-csi
+  tag: v0.1.2.1
+  pullPolicy: IfNotPresent
+  debug: false
 
+VELERO_AWS_PLUGIN_IMAGE:
+  registry: docker.io
+  repository: velero/velero-plugin-for-aws
+  tag: v1.1.0
+  pullPolicy: IfNotPresent
+  debug: false
+  
+VELERO_IMAGE:
+  registry: docker.io
+  repository: velero/velero
+  tag: v1.5.2
+  pullPolicy: IfNotPresent
+  debug: false
+
+KAGENT_IMAGE:
+  registry: docker.io
+  repository: catalogicsoftware/amds-kagent
+  tag: 0.1.0-rc.248
+  pullPolicy: IfNotPresent
+  debug: false
+
+request_velero_memory: 128Mi
+request_velero_cpu: 500m
+limit_velero_memory: 512Mi
+limit_velero_cpu: 1
+request_kubeagent_memory: 32Mi
+request_kubeagent_cpu: 250m
+limit_kubeagent_memory: 64Mi
+limit_kubeagent_cpu: 500m
+
+# Placeholder configuration below this line
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
@@ -14,8 +50,6 @@ serviceAccount:
   create: true
   annotations: {}
   name: ""
-
-# AMDS_CLUSTER_ID: 5fc0d782192031391f205b5f
 
 podAnnotations: {}
 
@@ -28,7 +62,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 3
+  maxReplicas: 1
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
 
