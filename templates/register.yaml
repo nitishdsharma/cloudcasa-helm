@@ -2891,7 +2891,7 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       containers:
-      - image: catalogicsoftware/amds-kagent:0.1.0-rc.256
+      - image: {{ template "cloudcasa-helm.kagent_image" . }}
         {{- if eq .Values.AMDS_CLUSTER_TYPE "production" }}
         args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.cloudcasa.io:443", "--tls", "true"]
         {{- else if eq .Values.AMDS_CLUSTER_TYPE "staging" }}

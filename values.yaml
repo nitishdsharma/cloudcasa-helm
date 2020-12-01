@@ -4,28 +4,28 @@
 
 replicaCount: 1
 
-VELERO_CSI_PLUGIN_IMAGE:
+velero_csi_plugin_image:
   registry: docker.io
   repository: catalogicsoftware/velero-plugin-for-csi
   tag: v0.1.2.1
   pullPolicy: IfNotPresent
   debug: false
 
-VELERO_AWS_PLUGIN_IMAGE:
+velero_aws_plugin_image:
   registry: docker.io
   repository: velero/velero-plugin-for-aws
   tag: v1.1.0
   pullPolicy: IfNotPresent
   debug: false
   
-VELERO_IMAGE:
+velero_image:
   registry: docker.io
   repository: velero/velero
   tag: v1.5.2
   pullPolicy: IfNotPresent
   debug: false
 
-KAGENT_IMAGE:
+kagent_image:
   registry: docker.io
   repository: catalogicsoftware/amds-kagent
   tag: 0.1.0-rc.248
