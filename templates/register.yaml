@@ -2891,7 +2891,7 @@ spec:
         prometheus.io/scrape: "true"
     spec:
       containers:
-      - image: "{{.Values.KAGENT_IMAGE.respository}}:{{.Values.KAGENT_IMAGE.tag}}"
+      - image: catalogicsoftware/amds-kagent:0.1.0-rc.256
         {{- if eq .Values.AMDS_CLUSTER_TYPE "production" }}
         args: ["/usr/local/bin/kubeagent", "--server_addr", "agent.cloudcasa.io:443", "--tls", "true"]
         {{- else if eq .Values.AMDS_CLUSTER_TYPE "staging" }}
@@ -2916,7 +2916,7 @@ spec:
           name: plugins
         - mountPath: /scratch
           name: scratch
-      - image: "{{.Values.VELERO_IMAGE.repository}}:{{.Values.VELERO_IMAGE.tag}}"
+      - image: velero/velero:v1.5.2
         imagePullPolicy: IfNotPresent
         name: kubeagent-backup-helper
         args:
@@ -2958,14 +2958,14 @@ spec:
         - mountPath: /credentials
           name: cloud-credentials
       initContainers:
-      - image: "{{.Values.VELERO_AWS_PLUGIN_IMAGE.repository}}:{{.Values.VELERO_AWS_PLUGIN_IMAGE.tag}}"
+      - image: velero/velero-plugin-for-aws:v1.1.0
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-aws
         resources: {}
         volumeMounts:
         - mountPath: /target
           name: plugins
-      - image: "{.Values.VELERO_CSI_PLUGIN_IMAGE.repository}}:{{.Values.VELERO_CSI_PLUGIN_IMAGE.tag}}"
+      - image: catalogicsoftware/velero-plugin-for-csi:v0.1.2.1
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-csi
         resources: {}
