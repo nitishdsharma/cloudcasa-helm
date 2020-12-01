@@ -28,7 +28,7 @@ velero_image:
 kagent_image:
   registry: docker.io
   repository: catalogicsoftware/amds-kagent
-  tag: 0.1.0-rc.248
+  tag: 0.1.0-rc.158
   pullPolicy: IfNotPresent
   debug: false
 
