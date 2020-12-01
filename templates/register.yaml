@@ -2901,11 +2901,11 @@ spec:
         name: kubeagent
         resources:
           requests:
-            memory: "{{ .Values.request_kubeagent_memory }}"
-            cpu: "{{ .Values.request_kubeagent_cpu }}"
+            memory: 64Mi
+            cpu: 500m
           limits:
-            memory: "{{ .Values.limit_kubeagent_memory }}"
-            cpu: "{{ .Values.limit_kubeagent_cpu }}"
+            memory: 250m
+            cpu: 32Mi
         env:
         - name: AMDS_CLUSTER_ID
           value: "{{ .Values.AMDS_CLUSTER_ID }}"
@@ -2945,11 +2945,11 @@ spec:
           name: metrics
         resources:
           limits:
-            cpu: "{{ .Values.limit_velero_cpu }}"
-            memory: "{{ .Values.limit_velero_memory }}"
+            cpu: 1
+            memory: 512Mi
           requests:
-            cpu: "{{ .Values.request_velero_cpu }}"
-            memory: "{{ .Values.request_velero_memory }}"
+            cpu: 500m
+            memory: 128Mi
         volumeMounts:
         - mountPath: /plugins
           name: plugins
