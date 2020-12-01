@@ -2916,7 +2916,7 @@ spec:
           name: plugins
         - mountPath: /scratch
           name: scratch
-      - image: velero/velero:v1.5.2
+      - image: "{{ .Values.velero_image.repository }}:{{ .Values.velero_image.tag }}"
         imagePullPolicy: IfNotPresent
         name: kubeagent-backup-helper
         args:
@@ -2958,14 +2958,14 @@ spec:
         - mountPath: /credentials
           name: cloud-credentials
       initContainers:
-      - image: velero/velero-plugin-for-aws:v1.1.0
+      - image: "{{ .Values.velero_aws_plugin_image.repository }}:{{ .Values.velero_aws_plugin_image.tag }}"
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-aws
         resources: {}
         volumeMounts:
         - mountPath: /target
           name: plugins
-      - image: catalogicsoftware/velero-plugin-for-csi:v0.1.2.1
+      - image: "{{ .Values.velero_csi_plugin_image.repository }}:{{ .Values.velero_csi_plugin_image.tag }}"
         imagePullPolicy: IfNotPresent
         name: velero-plugin-for-csi
         resources: {}
