@@ -2904,8 +2904,8 @@ spec:
             memory: "32Mi"
             cpu: "250m"
           limits:
-            memory: "500m"
-            cpu: "64Mi"
+            memory: "64Mi"
+            cpu: "500m"
         env:
         - name: AMDS_CLUSTER_ID
           value: "{{ .Values.AMDS_CLUSTER_ID }}"
